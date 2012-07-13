@@ -92,10 +92,11 @@ When you want to rebuild with new changes or after syncing to the latest CM src 
 
 Remove Assertions from update script
 ------------------------------------
-build / tools / releasetools / ota_from_target_files
+build/tools/releasetools/ota_from_target_files
+
 in line 380
 
---  AppendAssertions(script, input_zip)
+    --  AppendAssertions(script, input_zip)
 
-++#  AppendAssertions(script, input_zip)
+    ++#  AppendAssertions(script, input_zip)
 
