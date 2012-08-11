@@ -24,7 +24,7 @@ Now initialized the repository and pull the source (with my repos attached):
 
     $ cd ~/android/system/
     
-    $ repo init -u git://github.com/CyanogenMod/android.git -b gingerbread
+    $ repo init -u git://github.com/CyanogenMod/android.git -b jellybean
     
     $ repo sync -j16
 
@@ -37,7 +37,7 @@ We need Makefiles and other stuff for the device. Take it from the repository
 
     $ cd ~/android/system/devices/huawei/
 
-    $ git clone git://github.com/joaquimorg/android_device_huawei_u8510.git u8510
+    $ git clone git://github.com/joaquimorg/android_device_huawei_u8510.git -b jellybean u8510
 
 or download the tarball https://github.com/joaquimorg/android_device_huawei_u8510/tarball/master and extract it to ~/android/system/devices/huawei/ and name the new directory u8510
 
@@ -52,13 +52,16 @@ We will need to reuse some proprietary files from the stock ROM:
     
     $ ./extract-files.sh
 
-Building CM7
+Building CM10
 -------------
+
+...............Work in Progress...............
+
 Once thats done you can start compiling.
 
 Follow the aosp instructions on setting up the build environment. - http://source.android.com/source/download.html
 
-When the environment is setup, we need to grab a copy of Koush's ROM Manager. This is necessary to build CM7.
+When the environment is setup, we need to grab a copy of Koush's ROM Manager. This is necessary to build CM10.
 
     $ cd
     
@@ -75,7 +78,7 @@ or
     $ ./go
 
 
-Installing CM7
+Installing CM10
 ---------------
 If the build was successful, you can now take the update zip found in out/target/product/u8510/ and flash using a custom recovery. Make sure to grab the latest Gapps to complete the experience.
 
