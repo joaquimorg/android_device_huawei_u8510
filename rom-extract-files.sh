@@ -139,4 +139,7 @@ cp system/lib/egl/libq3dtools_adreno200.so ../../../vendor/$MANUFACTURER/$DEVICE
 
 chmod 755 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/bin/* 
 
-./setup-makefiles.sh
+# Get from 
+# git clone https://github.com/joaquimorg/android_vendor_huawei_u8510.git -b master u8510 
+#
+#./setup-makefiles.sh
