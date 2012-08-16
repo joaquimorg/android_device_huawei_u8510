@@ -12,42 +12,49 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# config.mk
-#
-# Product-specific compile-time definitions.
-#
+# This variable is set first, so it can be overridden
+# by BoardConfigVendor.mk
 
-LOCAL_PATH:= $(call my-dir)
-
-USE_CAMERA_STUB := true
+USE_CAMERA_STUB := false
+BOARD_USE_FROYO_LIBCAMERA := true
 
 # inherit from the proprietary version
--include vendor/huawei/u8510/BoardConfigVendor.mk
+-include device/huawei/u8510/BoardConfigVendor.mk
 
-TARGET_NO_BOOTLOADER := true
-TARGET_BOARD_PLATFORM := msm7k
+# ARMv6-compatible processor rev 5 (v6l)
+TARGET_BOARD_PLATFORM := msm7x27
 TARGET_ARCH_VARIANT := armv6-vfp
-TARGET_CPU_ABI := armeabi
 TARGET_CPU_ABI := armeabi-v6l
 TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH := arm
+ARCH_ARM_HAVE_VFP := true
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
 TARGET_BOOTLOADER_BOARD_NAME := u8510
+TARGET_OTA_ASSERT_DEVICE := u8510,U8510
 
-BOARD_KERNEL_CMDLINE := console=ttyDCC0 androidboot.hardware=huawei
+# ttyDCC0
+#BOARD_KERNEL_CMDLINE := console=tty0 androidboot.hardware=huawei
+BOARD_KERNEL_CMDLINE := console=tty0 androidboot.hardware=huawei mem.size=256M
 BOARD_KERNEL_BASE := 0x10200000
 BOARD_PAGE_SIZE := 0x00000800
 
+# Browser
 WITH_JIT := true
 ENABLE_JSC_JIT := true
 JS_ENGINE := v8
+HTTP := chrome
+TARGET_WEBKIT_USE_MORE_MEMORY := true
 
 # Graphics
 TARGET_GRALLOC_USES_ASHMEM := true
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 BOARD_NO_RGBX_8888 := true
 # OpenGL drivers config file path
-BOARD_EGL_CFG := device/huawei/u8510/egl.cfg
+BOARD_EGL_CFG := device/huawei/u8510/prebuild/egl.cfg
 
+#QCom
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
 BOARD_USES_QCOM_GPS := true
@@ -56,6 +63,7 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 TARGET_PROVIDES_LIBAUDIO := true
 
+#FM Radio
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 BOARD_FM_DEVICE := bcm4329
@@ -84,18 +92,21 @@ BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
 
 # fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00500000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00500000
+#BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00500000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00510000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x0ba00000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0a0a0000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-TARGET_PREBUILT_KERNEL := device/huawei/u8510/prebuild/kernel
-#TARGET_PREBUILT_KERNEL := kernel/u8510/arch/arm/boot/zImage
-#TARGET_KERNEL_SOURCE := kernel/u8510
-#TARGET_KERNEL_CONFIG := device/huawei/u8510/kernel/u8510_config
+#TARGET_PREBUILT_KERNEL := device/huawei/u8510/kernel/kernel
+#TARGET_PREBUILT_KERNEL := device/huawei/u8510/prebuild/kernel
+#TARGET_PREBUILT_KERNEL := kernel/huawei/u8510/arch/arm/boot/zImage
+TARGET_KERNEL_SOURCE := kernel/huawei/u8510
+TARGET_KERNEL_CONFIG := hw_u8510_defconfig
 
-BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/huawei/u8510/recovery/recovery_ui.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/huawei/u8510/recovery/recovery_keys.c
 
 # recovery
-TARGET_PREBUILT_RECOVERY_KERNEL := device/huawei/u8510/recovery/prebuild/recovery_kernel
+#TARGET_PREBUILT_RECOVERY_KERNEL := device/huawei/u8510/recovery/prebuild/recovery_kernel
+#TARGET_PREBUILT_RECOVERY_KERNEL := device/huawei/u8510/kernel/kernel
 

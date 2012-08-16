@@ -1,0 +1,9 @@
+
+
+FILE : bionic/libc/arch-arm/include/machine/cpu-features.h
+/* define __ARM_HAVE_LDREX_STREX for ARMv6 and ARMv7 architecture to be
+ * used in replacement of deprecated swp instruction
+ */
+#if __ARM_ARCH__ > 6 // Changed >= to >
+#  define __ARM_HAVE_LDREX_STREX
+#endif
