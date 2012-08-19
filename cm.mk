@@ -1,3 +1,6 @@
+# Inherit device configuration
+$(call inherit-product, device/huawei/u8510/full_u8510.mk)
+
 # Specify phone tech before including full_phone
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
@@ -7,9 +10,6 @@ PRODUCT_RELEASE_NAME := U8510
 # Inherit some common CM stuff. 
 # Changed to not get the proprietary stuff
 $(call inherit-product, device/huawei/u8510/common_full_phone.mk)
-
-# Inherit device configuration
-$(call inherit-product, device/huawei/u8510/full_u8510.mk)
 
 #Animation
 PRODUCT_COPY_FILES += \
